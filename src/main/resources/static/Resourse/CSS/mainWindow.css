@@ -1,0 +1,442 @@
+/*
+    DEMO STYLE
+*/
+
+@font-face {
+    font-family: allCanDEMORegular;
+    src: url('../../fonts/allCanDEMORegular.ttf');
+}
+
+@font-face {
+    font-family: notoSansKR-Regular;
+    src: url('../../fonts/notoSansKR-Regular.otf')
+}
+
+
+*{
+        /* border: 1px solid red; */
+        font-family: allCanDEMORegular;
+}
+
+body {
+
+    background: url(../../images/4.jpg) no-repeat center center fixed;
+    background-size: cover !important;
+}
+
+/* ---------------------------------------------
+        GIF STYLE
+--------------------------------------------- */
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: rgba(21, 49, 49, 0.6);
+
+}
+.loader img{
+    position: fixed !important;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+/*--------------------------------------- 
+    NAVBAR STYLE
+-----------------------------------------*/
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.navbar {
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.9);
+    border: none;
+    height: 70px;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#sideBarCollapse {
+    color: white;
+    border: 1px solid #fff;
+    background-color: transparent
+}
+
+#sideBarCollapse:hover{
+    color: rgb(10, 247, 255);
+    border-color: rgb(0, 224, 231);
+    box-shadow: 0 0 10px rgb(6, 255, 213) ;
+    background-color: transparent;
+}
+
+#sideBarCollapse:focus{
+    box-shadow: none ;
+}
+
+.logo {
+    width: auto;
+    height: 60px;
+    margin-left: 20px;
+}
+
+/* navbar css */
+
+.notify {
+    
+    margin:4px 15px 0 15px;
+    padding: 5px;
+}
+
+.notifications {
+    font-size: 25px;
+    color: white;
+}
+
+.notifications:hover{
+    color: #00ffbf;
+    cursor: pointer;
+}
+
+.miniImage {
+    height: 35px;
+    width: auto;
+    margin: 8px 10px 0 0;
+}
+
+#parentDivChangePW {
+    background: #6e6e72;
+}
+
+#changePassword {
+    color: white;
+}
+#changePassword:hover {
+    color: #00ffbf;
+    background: #6e6e72;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sideBar {
+    min-width: 270px;
+    max-width: 270px;
+    text-align: left;
+    background: rgba(0,0,0,0.85);
+    height: 92vh;
+    margin-top: 70px;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+
+
+}
+
+.brandContainer {
+    height: 70px;
+    padding: 8px 5px 8px 5px;
+    display: flex;
+    border-bottom: 1px solid #00ffbf;
+}
+
+.companyName {
+    padding: 15px;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+    animation: companyNameAni 10s infinite;
+}
+
+@keyframes companyNameAni {
+    0% {color: rgb(23, 241, 114);}
+    10% {color: rgb(23, 241, 176);}
+    20% {color: rgb(19, 214, 182);}
+    30% {color: rgb(39, 223, 115);}
+    40% {color: rgb(8, 238, 180);}
+    50% {color: rgb(11, 194, 124);}
+    60% {color: rgb(18, 235, 83);}
+    70% {color: rgb(28, 230, 179);}
+    80% {color: rgb(18, 235, 235);}
+    90% {color: rgb(53, 221, 236);}
+    100% {color: rgb(75, 243, 70);}
+}
+
+.profile{
+    height: 85px;
+    padding: 10px 5px 10px 20px;
+    display: flex;
+    border-bottom: 1px solid #00ffbf;
+    cursor: pointer;
+}
+
+.image {
+    width: 65px;
+    height: 65px;
+    margin: 0 0 0 0;
+}
+
+.profile-name {  
+    font-size: 20px;
+    color: white;
+    padding: 20px 0 5px 15px;
+    margin: 0;
+}
+
+.des-name {
+    font-size: 15px;
+    color: white;
+    padding: 0px 0px 5px 15px;
+}
+
+#sideBar ul.listComponents {
+    padding: 20px 8px 20px 8px;
+    margin: 0;
+    font-size: 20px;
+}
+
+.subMenu li a {
+    font-size: 15px;
+}
+
+#sideBar ul li a {
+    display: block;
+    color: white;
+    padding: 8px 16px 8px 16px;
+    margin: 0 0 3.2px 0;
+    text-decoration: none;
+}
+
+#sideBar ul li a:hover {
+    color:#00ffbf;
+    background: rgb(77, 74, 74);
+    border-radius: 5px;
+}
+
+#sideBar ul li a i{
+    margin-right: 5px;
+    padding-right: 8px;
+    margin-top: 2.5px;
+    float: left;
+}
+
+#sideBar ul li ul li a i{
+    margin-right: 3px;
+    padding-right: 3px;
+    margin-top: 2px;
+    float: left;
+}
+
+#sideBar.active {
+    display: none;
+}
+
+.dropdown-toggle::after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#sideBar ul li.active>a,
+a[aria-expanded="true"] {
+    color: white !important;
+    border-radius: 5px;
+    background: #009c94;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+
+/* ---------------------------------------------------
+    SCROLL BAR STYLE IN MAIN
+----------------------------------------------------- */
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(330deg, #0df192 0%, #73ffc5 100%);
+    background-image: linear-gradient(120deg, #4fffb6 0%, #5bffce 100%);
+    border-radius: 5px;
+}
+
+
+/* ---------------------------------------------------
+    SCROLL BAR STYLE IN SIDEBAR
+----------------------------------------------------- */
+
+
+.scrollBarSmooth::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+    
+.scrollBarSmooth::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: linear-gradient(330deg, #0df192 0%, #73ffc5 100%);
+    background-image: linear-gradient(120deg, #4fffb6 0%, #5bffce 100%); 
+}
+
+
+
+/* ---------------------------------------------------
+    Main CONTENT STYLE
+----------------------------------------------------- */
+
+
+.formArea {
+    padding: 0px 30px 20px 30px;
+    width: 100%;
+    margin-top: 85px;
+    margin-left: 250px;
+}
+
+.formArea.active {
+    margin-left: 100px;
+    margin-right: 100px;
+    transition: 0.5s;
+}
+
+
+.modal-backdrop.fade.show {
+    display: none;
+}
+
+/* ---------------------------------------------------
+    CHANGE PASSWORD FORM CONTENT STYLE
+----------------------------------------------------- */
+
+#modalHeaderTitle {
+    background-color: #09b1a8 !important;
+    color: white;
+    border: none;
+}
+
+#btnModalCloseTopCP {
+    color: white !important;
+}
+
+#btnModalCloseTopCP:hover {
+    color: red !important;
+}
+
+#modalContentCP {
+    border: none;
+    background: none !important;
+}
+
+#modalBodyContent {
+    border: none;
+    background: rgba(23, 41, 39, 0.9);
+    color: #8ecd37;
+}
+
+.form-group > * {
+    font-family: notoSansKR-Regular !important;
+}
+
+.u-and-d {
+   color: white !important;
+}
+
+#footer-section {
+    border: none;
+    background: rgba(23, 41, 39, 0.9);
+}
+
+#closeBtn:hover {
+    background-color: red;
+}
+
+/* ---------------------------------------------------
+    DASH BOARD CONTENT STYLE
+----------------------------------------------------- */
+
+.quick-access-style{
+    font-family: notoSansKR-Regular !important;
+}
+
+.quick-card-style{
+    background: rgba(1, 41, 35, 0.9) !important;
+    border: none !important;
+}
+
+.topic-title{
+    text-align: center;
+    color: white;
+    font-family: notoSansKR-Regular !important;
+    background-color: #09b1a8 !important;
+}
+
+.link-text {
+    color: white;
+}
+
+.link-text:hover {
+    color: #00ffbf;
+    text-decoration: underline #00ffbf !important;
+}
+
+.icon-style{
+    color: white;
+}
+
+/* ---------------------------------------------------
+    NOTIFICATION MODAL STYLE
+----------------------------------------------------- */
+
+.notify-content{
+    background: rgba(0, 37, 37, 0.6) !important;
+    border: none !important;
+}
+
+.view-header {
+    background-color: #2d3035;
+    color: white;
+}
+
+.notify-title{
+    font-family: allCanDEMORegular;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.notify-card-style{
+    background: rgba(1, 41, 35, 0.9) !important;
+    border: 1px solid #00ffcc !important;
+}
+
+.notification-font-style{
+    font-family: notoSansKR-Regular !important;
+}
+
+.notify-empty-card-style{
+    background: rgb(2, 55, 51) !important;
+    border: 1px solid #00ffcc !important;
+}
+
+#crumb{
+    display: none !important;
+}

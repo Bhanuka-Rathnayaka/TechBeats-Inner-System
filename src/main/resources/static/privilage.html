@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dark Admin by Bootstrapious.com</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="Resourse/CSS/style.css">
+    <link rel="stylesheet" href="Resourse/CSS/ram_css.css">
+     <link rel="stylesheet" href="Resourse/CSS/pro_css.css">
+     <link rel="stylesheet" href="Resourse/CSS/user_css.css">
+
+      <!-- jquary -->
+      <script src="Resourse/Jquary/jquary.js"></script>
+
+      <script src="Resourse/Script/common.js"></script>
+      <script src="privilage.js"></script>
+      <script src="Resourse/Script/dashboard.js"></script>
+
+      <!-- Datatable -->
+      <link rel="stylesheet" type="text/css" href="Resourse/Datatables/datatables.min.css">
+
+      <script type="text/javascript" src="Resourse/Datatables/datatables.min.js"></script>
+
+      <!--font awesome-->
+      <script src="Resourse/fontawesome/fontawesome-free-6.2.0-web/js/all.js"></script>
+      <link rel="stylesheet" href="Resourse/fontawesome/fontawesome-free-6.2.0-web/css/all.css">
+
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+  <header class="header">
+      <nav class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10">
+          <div class="search-panel">
+              <div class="search-inner d-flex align-items-center justify-content-center">
+                  <div class="close-btn d-flex align-items-center position-absolute top-0 end-0 me-4 mt-2 cursor-pointer">
+                      <span>Close </span>
+                      <svg class="svg-icon svg-icon-md svg-icon-heavy text-gray-700 mt-1">
+                          <use xlink:href="#close-1"></use>
+                      </svg>
+                  </div>
+                  <div class="row w-100">
+                      <div class="col-lg-8 mx-auto">
+                          <form class="px-4" id="searchForm" action="#">
+                              <div class="input-group position-relative flex-column flex-lg-row flex-nowrap">
+                                  <input class="form-control shadow-0 bg-none px-0 w-100" type="search" name="search" placeholder="What are you searching for..."/>
+                                  <button class="btn btn-link text-gray-600 px-0 text-decoration-none fw-bold cursor-pointer text-center" type="submit">
+                                      Search
+                                  </button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="container-fluid d-flex align-items-center justify-content-between py-1">
+              <div class="navbar-header d-flex align-items-center">
+                  <a class="navbar-brand text-uppercase text-reset" href="/dashboard">
+                      <div class="brand-text brand-big">
+                          <strong class="text-primary">Tech</strong><strong>Beats</strong>
+                      </div>
+                      <div class="brand-text brand-sm">
+                          <strong class="text-primary">T</strong><strong>B</strong>
+                      </div>
+                  </a>
+                  <button class="sidebar-toggle">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
+                          <use xlink:href="#arrow-left-1"></use>
+                      </svg>
+                  </button>
+              </div>
+              <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                      <a class="search-open nav-link px-0" href="#">
+                          <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
+                              <use xlink:href="#find-1"></use></svg
+                          ></a>
+                  </li>
+
+                  <li class="list-inline-item logout px-lg-2">
+                      <a class="nav-link text-sm text-reset px-1 px-lg-0" id="logout"  onclick="logoutMC()"> <span class="d-none d-sm-inline-block">Logout </span>
+                          <svg class="svg-icon svg-icon-xs svg-icon-heavy">
+                              <use xlink:href="#disable-1"> </use>
+                          </svg>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+    <div class="d-flex align-items-stretch">
+      <!-- Sidebar Navigation-->
+        <nav id="sidebar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center p-4">
+                <img class="avatar shadow-0 img-fluid rounded-circle" id="logimage" src="" alt="..."/>
+                <div class="ms-3 title">
+                    <h1 class="h5 mb-1" id="uname"></h1>
+                    <p class="text-sm text-gray-700 mb-0 lh-1" id="role"></p>
+                </div>
+            </div>
+            <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
+            <ul class="list-unstyled">
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/dashboard">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#real-estate-1"></use></svg
+                        ><span>Home </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#admindropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Administrator</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="admindropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/employee">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Employee
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/user">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                User
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/privilage">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                User Privilage
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#customerdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Customer Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="customerdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/customer">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Customer Registration
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/customerorder">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Pre Order Management
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/invoice">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Invoice Management
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#supplierdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Supplier Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="supplierdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/supplier">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Supplier Registration
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/purchaserequest">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Purchase Order Management
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/supplierpayment">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Supplier Payment
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/grn">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#portfolio-grid-1"> </use>
+                        </svg><span>GRN</span></a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#itemdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Item Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="itemdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/rams">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Ram
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/processor">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Processor
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/vga">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Graphic Card
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/psu">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Power Supply Unit
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/casing">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Casing
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/cooler">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Cooler
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/storage">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Storage
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/motherboard">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Motherboard
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/laptop">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#portfolio-grid-1"> </use>
+                                </svg><span>Laptopt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/assemble">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#portfolio-grid-1"> </use>
+                        </svg><span>Assemble</span></a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#reportdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Report</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="reportdropdown">
+                        <li class="sidebar-item"><a class="sidebar-link" href="/invoicereport">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#disable-1"> </use>
+                            </svg><span>Invoice Report </span></a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" onclick="logoutMC()">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#disable-1"> </use>
+                        </svg><span>Log-Out </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+      <div class="page-content">
+         <!-- Page Header-->
+         <div class="bg-dash-dark-2 py-4">
+            <div class="container-fluid">
+              <h2 class="h5 mb-0">Privilage Details</h2>
+            </div>
+          </div>
+          <!-- Breadcrumb-->
+          <div class="container-fluid py-2">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">User Privilage</li>
+              </ol>
+            </nav>
+          </div>
+        
+        <div class="row mt-2">
+            <div class="col-1"></div>
+
+            <div class="box glow col-10">
+                
+                
+                <div class="card ram-card">
+                    <div class="card-header bg-dark bg-gradient text-center">
+                        <h2 class="h2">Privilege Details</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- TAB -->
+                                <ul class="nav nav-pills mt-5 mb-1" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active tab" id="tab-btn-tbl" data-bs-toggle="pill" data-bs-target="#emp-table" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Table</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link tab" id="tab-btn-form" data-bs-toggle="pill" data-bs-target="#emp-form" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Form</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tab content -->
+                        <div class="row mt-2">
+                            <div class="tab-content" id="pills-tabContent">
+
+                                <!-- Tab Content->Table -->
+                                <div class="tab-pane fade show active" id="emp-table" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h2 class="h2">User Privilage Table</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                    <i class="fa-solid fa-pencil h3"></i>
+                                                </div>
+                                            </div>
+
+                                            <hr id="line">
+
+                                            <div class="table-responsive">
+
+                                                <!-- Table -->
+                                                <table id="tbl_privilage" class="table table-striped table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Role Name</th>
+                                                        <th>Module Name</th>
+                                                        <th>Select</th>
+                                                        <th>Insert</th>
+                                                        <th>Updates</th>
+                                                        <th>Delete</th>
+                                                        <th>Modify</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Tab Content->Form -->
+                                <div class="tab-pane fade" id="emp-form" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h2 class="h2">Add User Privilage Form</h2>
+                                                </div>
+                                                <div class="col-6">
+                                                    <i class="fa-solid fa-pencil h3"></i>
+                                                </div>
+                                            </div>
+
+                                            <hr id="line">
+
+                                            <div class="row">
+
+                                                <!-- form -->
+                                                <form class="form">
+
+                                                    <!-- Required -->
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <p class="fw-bold">Required <span style="color: red;">&nbsp*</span> </p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mt-3">
+
+                                                        <!-- Select Role -->
+                                                        <div class="col-5">
+                                                            <div class="user-box">
+
+                                                                <div class="floating-label-content">
+                                                                    <select id="select_role" class="floating-select" onclick="this.setAttribute('value', this.value);selectValidater(select_role,'','privilage','role_id','old_privilage')" required>
+
+
+                                                                    </select>
+                                                                    <label class="floating-label">Role<span style="color: red;">*</span></label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-1">
+                                                        </div>
+
+
+                                                        <!-- Module name -->
+                                                        <div class="col-5">
+                                                            <div class="user-box">
+                                                                <div class="floating-label-content">
+                                                                    <select id="select_module" class="floating-select" onclick="this.setAttribute('value', this.value);selectValidater(select_module,'','privilage','module_id','old_privilage')" required>
+
+
+                                                                    </select>
+                                                                    <label class="floating-label">Module Name<span style="color: red;">*</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-1"></div>
+                                                    </div>
+
+
+                                                        <div class="row spacing">
+                                                            <!-- Select privilage-->
+                                                            <div class="col-5 user-box radio_box" id="selectradio">
+                                                                <div class="div-radio">
+                                                                    <div class="row">
+
+                                                                        <label class="lbl-gender">Select<span style="color: red;">*</span></label>
+
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-1"></div>
+                                                                        <div class="col">
+
+                                                                            <input type="radio" id="rad_select_grant" name="select" onchange="radioFieldValidator(rad_select_grant,'','privilage','select_permission',lbl_select_grant,lbl_select_notgrant,'old_privilage',selectradio)" required value="true">
+                                                                            <label class="lbl-gender" id="lbl_select_grant">Grant</label>
+
+                                                                            <input type="radio" id="rad_select_notgrant" name="select"  onchange="radioFieldValidator(rad_select_notgrant,'','privilage','select_permission',lbl_select_notgrant,lbl_select_grant,'old_privilage',selectradio)" required value="false">
+                                                                            <label class="lbl-gender" id="lbl_select_notgrant">Not-Grant</label>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-1"></div>
+
+                                                            <!-- Insert privilage-->
+                                                            <div class="col-5 user-box radio_box" id="insertradio">
+                                                                <div class="div-radio">
+                                                                    <div class="row">
+
+                                                                        <label class="lbl-gender">Insert<span style="color: red;">*</span></label>
+
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-1"></div>
+                                                                        <div class="col">
+
+                                                                            <input type="radio" id="rad_insert_grant" name="insert" onchange="radioFieldValidator(rad_insert_grant,'','privilage','insert_permission',lbl_insert_grant,lbl_insert_notgrant,'old_privilage',insertradio)" required value="true">
+                                                                            <label class="lbl-gender" id="lbl_insert_grant">Grant</label>
+
+                                                                            <input type="radio" id="rad_insert_notgrant" name="insert"  onchange="radioFieldValidator(rad_insert_notgrant,'','privilage','insert_permission',lbl_insert_notgrant,lbl_insert_grant,'old_privilage',insertradio)" required value="false">
+                                                                            <label class="lbl-gender" id="lbl_insert_notgrant">Not-Grant</label>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-1"></div>
+                                                        </div>
+
+
+                                                    <div class="row spacing">
+                                                        <!-- update privilage-->
+                                                        <div class="col-5 user-box radio_box" id="updateradio">
+                                                            <div class="div-radio">
+                                                                <div class="row">
+
+                                                                    <label class="lbl-gender">Update<span style="color: red;">*</span></label>
+
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-1"></div>
+                                                                    <div class="col">
+
+                                                                        <input type="radio" id="rad_update_grant" name="update" onchange="radioFieldValidator(rad_update_grant,'','privilage','update_permission',lbl_update_grant,lbl_update_notgrant,'old_privilage',updateradio)" required value="true">
+                                                                        <label class="lbl-gender" id="lbl_update_grant">Grant</label>
+
+                                                                        <input type="radio" id="rad_update_notgrant" name="update"  onchange="radioFieldValidator(rad_update_notgrant,'','privilage','update_permission',lbl_update_notgrant,lbl_update_grant,'old_privilage',updateradio)" required value="false">
+                                                                        <label class="lbl-gender" id="lbl_update_notgrant">Not-Grant</label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1"></div>
+
+                                                        <!-- delete privilage-->
+                                                        <div class="col-5 user-box radio_box" id="deleteradio">
+                                                            <div class="div-radio">
+                                                                <div class="row">
+
+                                                                    <label class="lbl-gender">Delete<span style="color: red;">*</span></label>
+
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-1"></div>
+                                                                    <div class="col">
+
+                                                                        <input type="radio" id="rad_delete_grant" name="delete" onchange="radioFieldValidator(rad_delete_grant,'','privilage','delete_permission',lbl_delete_grant,lbl_delete_notgrant,'old_privilage',deleteradio)" required value="true">
+                                                                        <label class="lbl-gender" id="lbl_delete_grant">Grant</label>
+
+                                                                        <input type="radio" id="rad_delete_notgrant" name="delete"  onchange="radioFieldValidator(rad_delete_notgrant,'','privilage','delete_permission',lbl_delete_notgrant,lbl_delete_grant,'old_privilage',deleteradio)" required value="false">
+                                                                        <label class="lbl-gender" id="lbl_delete_notgrant">Not-Grant</label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                    <!-- ////////////////// -->
+                                                    <!-- Buttons -->
+                                                    <div class="row">
+                                                        <div class="col-6"></div>
+                                                        <div class="col-6">
+                                                            <button class="glow-on-hover main-button" type="submit" onclick="buttonAddMC()">Add</button>
+                                                            <button class="glow-on-hover main-button" type="submit" onclick="buttonUpdateMC()">Update</button>
+                                                            <button class="glow-on-hover main-button" type="reset" onclick="refreshForm()">Clear</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-1"></div>
+
+            
+           
+        </div>
+      </div>
+    </div>
+
+    <!--model for view with print-->
+    <div class="modal fade" id="empViewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="empPrintTbl" class="table  table-striped table-hover">
+
+                        <tr>
+                            <th>Employee Number</th>
+                            <td id="td_number"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Full Name</th>
+                            <td id="td_fname"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Calling name</th>
+                            <td id="td_cname"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Address</th>
+                            <td id="td_address"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Photo</th>
+                            <td id="td_photo"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Emplloyee Status</th>
+                            <td id="td_status"></td>
+                        </tr>
+
+                    </table>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button onclick="empPrintModel()" type="button" class="btn btn-primary">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      // this is set to BootstrapTemple website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
+      
+      
+    </script>
+  </body>
+</html>

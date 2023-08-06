@@ -1,0 +1,479 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+.quickAccess {
+    animation: modelLinkAnimation 5s infinite;
+    font-size: 17px;
+    font-weight: normal !important;
+    font-family: allCanDEMORegular;
+}
+
+@keyframes modelLinkAnimation {
+    0% {
+        color: #ffffff;
+    }
+    25% {
+        color: rgb(172, 241, 218);
+    }
+    50% {
+        color: white;
+    }
+    75% {
+        color: rgb(172, 241, 218);
+    }
+    100% {
+        color: white;
+    }
+}
+
+.main-card {
+    border: none;
+    background: none !important;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.form-group > * {
+    font-family: notoSansKR-Regular !important;
+}
+
+.modelTxtField {
+    margin-right: 65px;
+}
+
+.checkIcon {
+    font-size: 16px;
+    padding: 12px 0 0 6px;
+    color: green;
+    display: none;
+}
+
+select option {
+    font-family: notoSansKR-Regular !important;
+}
+
+.header-title {
+    background-color: #09b1a8 !important;
+    color: white;
+}
+
+.content-body {
+    background: rgba(23, 41, 39, 0.9);
+    padding: 1px 20px 20px 20px !important;
+}
+
+.content-body label {
+    color: white;
+}
+
+.requiredField {
+    color: red;
+}
+
+.informDiv {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.informField {
+    color: white;
+    font-family: notoSansKR-Regular;
+}
+
+.jumbo {
+    background: rgba(36, 77, 70, 0.6) !important;
+    padding-top: 50px !important;
+}
+
+.not-allowed {
+    background-color: rgb(202, 191, 191) !important;
+}
+
+.not-allowed:hover {
+    cursor: not-allowed;
+}
+
+#dteDOAssignment {
+    color: white;
+    background: transparent !important;
+    border: none;
+}
+
+.paymentJumbo {
+    background: rgba(2, 26, 21, 0.6) !important;
+    /* padding-top: 50px !important; */
+}
+
+.payment-title{
+    text-align: left;
+}
+
+.dot{
+    font-weight: bold;
+    float: right;
+}
+
+.disArea{
+    min-height: 150px;
+}
+
+.select2-selection{
+    width: 450px !important;
+    height: 38px !important;
+    padding-top: 4px;
+    font-family: notoSansKR-Regular !important;
+}
+
+.select2-selection span {
+    font-family: notoSansKR-Regular !important;
+}
+
+.select2-results ul li {
+    font-family: notoSansKR-Regular !important;
+}
+
+.select2-selection__arrow{
+    margin-top: 6px !important;
+    margin-left: 10px !important;
+}
+
+.select2-selection__rendered{
+    padding-right: 5px !important;
+    font-family: notoSansKR-Regular !important;
+}
+
+/* ---------------------------------------------------
+    FORM BTN STYLE
+----------------------------------------------------- */
+
+
+div.addFormBtn button {
+    width: 100px;
+}
+
+#reset:hover {
+    color: white;
+}
+
+/* ---------------------------------------------------
+    ADD FORM INNER TABLE
+----------------------------------------------------- */
+
+thead.heading tr th {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+    color: rgb(0, 187, 146) !important;
+    background: rgba(33, 37, 41, 1);
+    text-align: center;
+}
+
+
+tbody.tableContent tr th,
+tbody.tableContent tr td,
+tbody.tableContent tr td a {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+}
+
+table td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------
+    TABLE BTN STYLE
+----------------------------------------------------- */
+
+a.btn {
+    padding: 4px;
+    height: 30px;
+    width: 40px;
+    box-shadow: none !important;
+}
+
+a.btn-view {
+    color: rgb(6, 185, 0) !important;
+    border: 1px solid rgb(6, 185, 0);
+}
+
+a.btn-view:hover {
+    color: white !important;
+    background-color: rgb(6, 185, 0);
+    border: none;
+}
+
+a.btn-update {
+    color: rgb(255, 251, 0) !important;
+    border: 1px solid rgb(255, 251, 0);
+}
+
+a.btn-update:hover {
+    color: white !important;
+    background-color: rgb(146, 149, 18);
+    border: none;
+}
+
+a.btn-delete {
+    color: red !important;
+    border: 1px solid red;
+}
+
+a.btn-delete:hover {
+    color: white !important;
+    background-color: rgb(248, 60, 60);
+    border: none;
+}
+
+#btnUpdate:hover {
+    color: white;
+    background-color: rgb(146, 149, 18);
+    border-color: rgb(146, 149, 18);
+}
+
+#updateQuoBtn:hover {
+    color: white;
+    background-color: rgb(146, 149, 18);
+    border-color: rgb(146, 149, 18);
+
+}
+
+
+/* ---------------------------------------------------
+    TABLE STYLE
+----------------------------------------------------- */
+
+
+.card-header {
+    color: white;
+}
+
+.table-card {
+    border: none;
+    background: none !important;
+    width: 100%;
+}
+
+.rowCountChange {
+    display: inline-block;
+    margin: 10px 0 0 10px;
+}
+
+.card-body {
+    color: white;
+}
+
+
+/* ---------------------------------------------------
+    VIEW MODEL BTN & ICON STYLE
+----------------------------------------------------- */
+
+.close-icon {
+    color: white !important;
+    padding: 5px 10px 0 0 !important;
+    outline: none;
+}
+
+.close-icon:hover {
+    color: red !important;
+}
+
+.close-icon:focus {
+    outline: none;
+}
+
+div.footer-section-btn button {
+    width: 100px;
+}
+
+/* ---------------------------------------------------
+    TABLE PRINT AND SEARCH DIV
+----------------------------------------------------- */
+
+.searchPrintBar {
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------
+    TABLE PRINT BUTTON
+----------------------------------------------------- */
+
+#tablePrint {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 15px;
+    background: transparent;
+    border: 2px solid white;
+}
+
+#tablePrint:focus {
+    box-shadow: none;
+
+}
+
+#tablePrint:hover {
+    color: #05750e;
+    border: 2px solid #05750e;
+}
+
+/* ---------------------------------------------------
+    TABLE DETAILS SEARCH FIELD
+----------------------------------------------------- */
+
+.searchDiv .search-container {
+    float: right;
+}
+
+.searchDiv input[type=text] {
+    font-family: notoSansKR-Regular !important;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+#searchField {
+    border-radius: 3px !important;
+}
+
+
+
+/* ---------------------------------------------------
+    INVOICE PRINT VIEW STYLE
+----------------------------------------------------- */
+
+
+.heading-section{
+background-color: #def1ee;
+}
+
+.company-name{
+    color: #098453;
+}
+
+.company-name-sub{
+    color: #098453;
+}
+
+#comp_info p {
+    font-size: 12px;
+}
+
+.form-body * {
+    font-family: notoSansKR-Regular !important;
+}
+
+.inv-info-lable{
+    font-size: 12px !important;
+}
+
+.inv-info {
+    font-family: notoSansKR-Regular !important;
+    font-size: 12px !important;
+    height: 17px !important;
+    background: none !important;
+    border: none !important;
+    color: black !important;
+    text-align: right;
+    margin-top: 1px !important;
+}
+
+#txtInvoiceCodeView{
+font-size: 12px !important;
+}
+
+.inv-cus-info-lable{
+    font-size: 12px !important;
+}
+
+.inv-cus-info {
+    font-family: notoSansKR-Regular !important;
+    font-size: 12px !important;
+    height: 17px !important;
+    background: none !important;
+    border: none !important;
+    color: black !important;
+    text-align: left;
+    margin-top: 1px !important;
+}
+
+#tblView thead.heading tr th {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+    color: rgb(67, 69, 68) !important;
+    background: white;
+    text-align: center;
+    font-size: 13px !important;
+}
+
+#tblView tbody tr td {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+    text-align: center;
+    font-size: 13px !important;
+}
+
+#tblViewW thead.heading tr th {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+    color: rgb(67, 69, 68) !important;
+    background: white;
+    text-align: center;
+    font-size: 13px !important;
+}
+
+#tblViewW tbody tr td {
+    font-family: notoSansKR-Regular !important;
+    font-weight: normal;
+    text-align: center;
+    font-size: 13px !important;
+}
+
+.inv-pay-info-lable{
+    font-size: 14px !important;
+}
+
+.inv-pay-info {
+    font-family: notoSansKR-Regular !important;
+    font-size: 14px !important;
+    height: 17px !important;
+    background: none !important;
+    border: none !important;
+    color: black !important;
+    text-align: left;
+    margin-top: 1px !important;
+}
+
+.symbol-icon{
+    float: right;
+}
+
+.pay-input-style{
+    padding-top: 5px;
+}
+
+.icon-size{
+    max-height: 0.8rem;
+    padding-left: 9px;
+}
+
+#warrant_des{
+    font-size: 12px;
+    text-align-last: left;
+}
+
+.signature-info p {
+    font-size: 12px;
+    text-decoration:overline dotted black;
+}
+
+div.footer-section-btn button {
+    width: 100px;
+}
+

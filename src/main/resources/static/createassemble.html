@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TechBeats</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="Resourse/CSS/style.css">
+    <link rel="stylesheet" href="Resourse/CSS/customerorder.css">
+      <link rel="stylesheet" href="Resourse/CSS/ram_css.css">
+
+      <!-- jquary -->
+      <script src="Resourse/Jquary/jquary.js"></script>
+
+      <script src="Resourse/Script/common.js"></script>
+      <script src="createassemble.js"></script>
+      <script src="Resourse/Script/dashboard.js"></script>
+
+
+      <!--iziToast-->
+      <link rel="stylesheet" href="Resourse/iziToast-master/dist/css/iziToast.min.css">
+      <script src="Resourse/iziToast-master/dist/js/iziToast.min.js"></script>
+
+      <!-- Datatable -->
+      <link rel="stylesheet" type="text/css" href="Resourse/Datatables/datatables.min.css">
+
+      <script type="text/javascript" src="Resourse/Datatables/datatables.min.js"></script>
+
+      <!--font awesome-->
+      <script src="Resourse/fontawesome/fontawesome-free-6.2.0-web/js/all.js"></script>
+      <link rel="stylesheet" href="Resourse/fontawesome/fontawesome-free-6.2.0-web/css/all.css">
+
+      <style>
+          .table {
+              display: table;
+              width: 100%;
+              border-collapse: collapse;
+          }
+
+          .table-header {
+              display: table-row;
+              font-weight: bold;
+              background-color: #f0f0f0;
+          }
+
+          .table-row {
+              display: table-row;
+          }
+
+          .table-cell {
+              display: table-cell;
+              padding: 8px;
+          }
+
+          /* Column Widths */
+          .col-1 {
+              width: 10%;
+          }
+
+          .col-2 {
+              width: 60%;
+          }
+
+          .col-3 {
+              width: 15%;
+          }
+
+          .col-4 {
+              width: 15%;
+          }
+
+          /* Remove Borders */
+          .table-cell {
+              border: none;
+              border-bottom: 1px solid #5a5151; /* Add a bottom border to simulate row separation */
+          }
+
+          /* Remove border from header cells */
+          .table-header .table-cell {
+              border: none;
+          }
+
+
+      </style>
+
+  </head>
+  <body>
+  <header class="header">
+      <nav class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10">
+          <div class="search-panel">
+              <div class="search-inner d-flex align-items-center justify-content-center">
+                  <div class="close-btn d-flex align-items-center position-absolute top-0 end-0 me-4 mt-2 cursor-pointer">
+                      <span>Close </span>
+                      <svg class="svg-icon svg-icon-md svg-icon-heavy text-gray-700 mt-1">
+                          <use xlink:href="#close-1"></use>
+                      </svg>
+                  </div>
+                  <div class="row w-100">
+                      <div class="col-lg-8 mx-auto">
+                          <form class="px-4" id="searchForm" action="#">
+                              <div class="input-group position-relative flex-column flex-lg-row flex-nowrap">
+                                  <input class="form-control shadow-0 bg-none px-0 w-100" type="search" name="search" placeholder="What are you searching for..."/>
+                                  <button class="btn btn-link text-gray-600 px-0 text-decoration-none fw-bold cursor-pointer text-center" type="submit">
+                                      Search
+                                  </button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="container-fluid d-flex align-items-center justify-content-between py-1">
+              <div class="navbar-header d-flex align-items-center">
+                  <a class="navbar-brand text-uppercase text-reset" href="/dashboard">
+                      <div class="brand-text brand-big">
+                          <strong class="text-primary">Tech</strong><strong>Beats</strong>
+                      </div>
+                      <div class="brand-text brand-sm">
+                          <strong class="text-primary">T</strong><strong>B</strong>
+                      </div>
+                  </a>
+                  <button class="sidebar-toggle">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
+                          <use xlink:href="#arrow-left-1"></use>
+                      </svg>
+                  </button>
+              </div>
+              <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                      <a class="search-open nav-link px-0" href="#">
+                          <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
+                              <use xlink:href="#find-1"></use></svg
+                          ></a>
+                  </li>
+
+                  <li class="list-inline-item logout px-lg-2">
+                      <a class="nav-link text-sm text-reset px-1 px-lg-0" id="logout"  onclick="logoutMC()"> <span class="d-none d-sm-inline-block">Logout </span>
+                          <svg class="svg-icon svg-icon-xs svg-icon-heavy">
+                              <use xlink:href="#disable-1"> </use>
+                          </svg>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+    <div class="d-flex align-items-stretch">
+      <!-- Sidebar Navigation-->
+        <nav id="sidebar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center p-4">
+                <img class="avatar shadow-0 img-fluid rounded-circle" id="logimage" src="" alt="..."/>
+                <div class="ms-3 title">
+                    <h1 class="h5 mb-1" id="uname"></h1>
+                    <p class="text-sm text-gray-700 mb-0 lh-1" id="role"></p>
+                </div>
+            </div>
+            <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
+            <ul class="list-unstyled">
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/dashboard">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#real-estate-1"></use></svg
+                        ><span>Home </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#admindropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Administrator</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="admindropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/employee">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Employee
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/user">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                User
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/privilage">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                User Privilage
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#customerdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Customer Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="customerdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/customer">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Customer Registration
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/customerorder">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Pre Order Management
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/invoice">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Invoice Management
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#supplierdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Supplier Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="supplierdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/supplier">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Supplier Registration
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/purchaserequest">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Purchase Order Management
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/supplierpayment">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Supplier Payment
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/grn">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#portfolio-grid-1"> </use>
+                        </svg><span>GRN</span></a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#itemdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Item Management</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="itemdropdown">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/rams">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Ram
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/processor">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Processor
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/vga">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Graphic Card
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/psu">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Power Supply Unit
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/casing">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Casing
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/cooler">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Cooler
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/storage">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Storage
+                            </a>
+                        </li>
+
+                        <li class=" sidebar-item">
+                            <a class="sidebar-link" href="/motherboard">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#browser-window-1"></use>
+                                </svg>
+                                Motherboard
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/laptop">
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                    <use xlink:href="#portfolio-grid-1"> </use>
+                                </svg><span>Laptopt</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/assemble">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#portfolio-grid-1"> </use>
+                        </svg><span>Assemble</span></a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#reportdropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"></use>
+                        </svg>
+                        <span>Report</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="reportdropdown">
+                        <li class="sidebar-item"><a class="sidebar-link" href="/invoicereport">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#disable-1"> </use>
+                            </svg><span>Invoice Report </span></a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" onclick="logoutMC()">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#disable-1"> </use>
+                        </svg><span>Log-Out </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+      <div class="page-content">
+         <!-- Page Header-->
+         <div class="bg-dash-dark-2 py-4">
+            <div class="container-fluid">
+              <h2 class="h5 mb-0">RAM Details</h2>
+            </div>
+          </div>
+          <!-- Breadcrumb-->
+          <div class="container-fluid py-2">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Customer Order</li>
+              </ol>
+            </nav>
+          </div>
+        
+        <div class="row mt-2">
+            <div class="col-1"></div>
+                <div class="box glow col-10">
+                    <div class="card ram-card">
+                        <div class="card-header bg-dark bg-gradient text-center">
+                            <h2 class="h2">Create Assemble</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table" id="assembletbl">
+                                <div class="table-header">
+                                    <div class="table-cell col-1">Item Category</div>
+                                    <div class="table-cell col-2">Selection</div>
+                                    <div class="table-cell col-3">Photo</div>
+                                    <div class="table-cell col-4">Price</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large">Processor</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_pro"  class="floating-select" onchange="selectValidater(select_pro,'','assemble','processor_id','oldassemble');getPrice(select_pro,proamount);getMotherboardAcccToProcessor();getRamAcccToProcessorAndMB()" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="proamount">
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large">Motherboard</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_mb" class="floating-select" onchange="selectValidater(select_mb,'','assemble','motherboard_id','oldassemble');getPrice(select_mb,mbamount);getRamAcccToProcessorAndMB();getStorageAcccToMB();getVgaAccToMB();getCoolerAcctoMB();getPSUAcctoMBAndVga();getCaseAcctoMB()" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="mbamount">
+                                    </div>
+                                </div>
+
+                                <div class="table-row ramgen" id="ramRow">
+                                    <div class="table-cell col-1" style="font-size: large">Ram</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_ram" class="floating-select" onchange="selectValidater(select_ram,'','assemble','ram_id','oldassemble');getPrice(this,this.parentNode.parentNode.children[3].children[0])" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                        <button onclick="generateRow()">+</button>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="ramamount">
+                                    </div>
+                                </div>
+
+                                <div class="table-row stgen" id="stRow">
+                                    <div class="table-cell col-1" style="font-size: large">Storage</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_storge" class="floating-select" onchange="selectValidater(select_storge,'','assemble','storage_id','oldassemble');getPrice(this,this.parentNode.parentNode.children[3].children[0])" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                        <button onclick="generateRow1()">+</button>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4"><input class="input-txt itemprice" type="text" id="stamount"></div>
+                                </div>
+
+                                <div class="table-row" id="vgaRow">
+                                    <div class="table-cell col-1" style="font-size: large">Graphic Card</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_vga" class="floating-select" onchange="selectValidater(select_vga,'','assemble','vga_id','oldassemble');getPrice(select_vga,vgaamount);getPSUAcctoMBAndVga()" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="vgaamount">
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large">Cooler</div>
+                                    <div class="table-cell col-2">
+
+                                        <select id="select_cooler" class="floating-select" onchange="selectValidater(select_cooler,'','assemble','cooler_id','oldassemble');getPrice(select_cooler,cooleramount)" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="cooleramount">
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large">Power Supply Unit</div>
+                                    <div class="table-cell col-2">
+
+                                        <select id="select_psu" class="floating-select" onchange="selectValidater(select_psu,'','assemble','powersupply_id','oldassemble');getPrice(select_psu,psuamount)" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="psuamount">
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large">Casing</div>
+                                    <div class="table-cell col-2">
+                                        <select id="select_case" class="floating-select" onchange="selectValidater(select_case,'','assemble','casing_id','oldassemble');getPrice(select_case,caseamount);getTotal()" onclick="this.setAttribute('value', this.value)" required>
+
+                                        </select>
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt itemprice" type="text" id="caseamount">
+                                    </div>
+                                </div>
+
+                                <div class="table-row">
+                                    <div class="table-cell col-1" style="font-size: large"></div>
+                                    <div class="table-cell col-2">
+                                    </div>
+                                    <div class="table-cell col-3"></div>
+                                    <div class="table-cell col-4">
+                                        <input class="input-txt" type="text" id="texttotalAmount">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <button class="glow-on-hover main-button" id="addbtn" type="submit" onclick="buttonAddMc()">Add</button>
+                                    <button class="glow-on-hover main-button" type="button" onclick="refresh()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-1"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- JavaScript files-->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    <script>
+
+
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      // this is set to BootstrapTemple website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+
+    </script>
+  </body>
+</html>

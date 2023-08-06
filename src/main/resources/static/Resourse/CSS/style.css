@@ -1,0 +1,482 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    /* background-image:url(ales-nesetril-Im7lZjxeLhg-unsplash.jpg);  */
+    background: rgb(0, 0, 0);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+} 
+
+.h1{
+   color: white;
+   margin-top: 10px; 
+}
+
+.h2{
+    color: white;
+
+}
+i{
+    color: white;
+    float: right;
+}
+
+#line{
+    color: white;
+}
+
+.line{
+    color: white;
+}
+
+.box{
+    margin-bottom: 50px;
+    /* background: rgba(0, 0, 0, 0.559); */
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+    padding: 20px;
+    position: relative;
+   
+}
+
+
+.box::before,.box::after{
+    content: "";
+    position: absolute;
+
+    background:linear-gradient(45deg,#36d6d6,#36d6d6,#36d6d6,#11ff00,#cb1ab9,#cb1ab9,#cb1ab9);
+    background-size: 400%;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    z-index: -1;
+    animation: animation 20s linear infinite;
+
+}
+
+.box::after{
+    filter: blur(40px);
+    opacity: .6;
+}
+
+@keyframes animation{
+     0%{
+        background-position: 0 0;
+    }
+
+    50%{
+        background-position: 400% 0;
+    }
+
+    100%{
+        background-position: 0 0;
+    }
+
+
+}
+
+
+
+.spacing{
+    padding-top: 50px;
+}
+
+form{
+    font-size: large;
+}
+
+
+/* input type=text */
+.input-txt{
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+.user-box{
+    position: relative;
+}
+
+/* Label-input type = text */
+.lbl-txt{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+    /*margin-left: 8px;*/
+}
+
+
+/* text floting style */
+
+/*
+.input-txt:focus ~ .lbl-txt,
+.input-txt:valid ~ .lbl-txt{
+    top: -20px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}
+*/
+
+
+/*.input-txt:focus ~ .lbl-txt,
+.input-txt:not(:placeholder-shown) ~ .lbl-txt {
+    top: -20px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}*/
+
+.input-txt:focus ~ .lbl-txt,
+input.input-txt[required]:valid~ .lbl-txt,
+input.input-txt:optional:not(:placeholder-shown) ~ .lbl-txt{
+    top: -20px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}
+/*.input-txt:focus + .lbl-txt,
+.input-txt:not(:placeholder-shown):focus + .lbl-txt,
+.input-txt:not(:focus):not(:placeholder-shown) + .lbl-txt,
+.input-txt:not(:focus):not(:placeholder-shown):not(:valid) + .lbl-txt {
+    top: -20px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}
+
+.input-txt:not(:focus):not(:placeholder-shown):valid + .lbl-txt {
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 16px;
+}*/
+
+
+/* DOB */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+  }
+.dob{
+    color: white;
+}
+
+/* input type = radio */
+.div-radio{
+    position: absolute;
+    top: -23px;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 8px;
+}
+
+.radio_box{
+    height: 45px;
+    border-bottom: 1px solid white;
+}
+
+/* select */
+/* ///////////////////// */
+.floating-label-content { 
+    position:relative; 
+    
+    
+  }
+  .floating-label {
+    color:white; 
+    font-size:16px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:0px;
+    top:11px;
+    padding:0 5px;
+    background:transparent;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  .floating-select {
+    font-size:16px;
+    display:block;
+    width:100%;
+    height:45px;
+    color: white;
+    background:transparent;
+    border: 0px;
+    outline: 0px;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    
+  }
+  
+  option{
+    color: #323840;
+  }
+ 
+  
+  
+  /*.floating-select:not([value=""]):valid ~ .floating-label {
+    top:-10px;
+    font-size:12px;
+    color: white;
+  }
+  .floating-select[value=""]:focus ~ .floating-label {
+    top:1px;
+    font-size:12px;
+    color: red;
+  }*/
+/*/////////*/
+
+
+
+
+.floating-select[required]:valid ~ .floating-label,
+.floating-select[value=""]:focus ~ .floating-label{
+   top:-10px;
+   font-size:12px;
+   color: white;
+ }
+
+
+.floating-select:not([required]):not([value=""]) ~ .floating-label {
+    top: -10px;
+    font-size: 12px;
+    color: white;
+}
+
+
+
+
+  /* textarea */
+  .txtarea{
+    width: 100%;
+    height: auto;
+    background: transparent;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+      outline: none;
+      resize: none;
+  }
+
+  .lbl-txtarea{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+
+
+  .txtarea:focus ~ .lbl-txtarea, .txtarea:valid ~  .lbl-txtarea {
+    top: -30px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+    -webkit-transition: all 0.125s ease;
+    transition: all 0.125s ease;
+   }
+
+   .styled-input {
+    position: relative;
+       top: -24px;
+    
+  }
+  
+  .styled-input label {
+    color: white;
+    margin-left: 8px;
+    position: absolute;
+    top: 1.5px;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+
+  .marginforrow{
+
+  }
+
+  /* /////////// */
+  /* Buttons */
+  .glow-on-hover {
+    width: 30%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    
+}
+
+  .dissablebtn{
+      width: 30%;
+      height: 50px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background: #111;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 10px;
+  }
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.main-button{
+    font-size: 18px;
+}
+
+.bdr{
+    border-bottom: 2px solid green;
+}
+
+/*swith*/
+#lblstatus{top: -13px}
+#divswitch{padding-left: 0px}
+.switch{
+    top: 21px;
+}
+
+
+/* table */
+table{
+    font-size: large;
+}
+
+.dataTables_length select {
+    color: aqua;
+}
+.dataTables_length label{
+    color: aqua;
+    border-color: aqua;
+}
+
+.dataTables_filter label{
+    color: aqua;
+}
+.dataTables_filter input[type="search"] {
+    color: #fff;
+
+
+}
+.dataTables_filter input{
+    background: transparent !important;
+}
+.dataTables_info {
+    color: aqua !important; /* Change to your desired color */
+}
+
+.paginate_button.previous,
+.paginate_button.current,
+.paginate_button.next {
+    color: aqua !important; /* Change this to the color you want */
+    background: #0c4128 !important;
+}
+
+.tooltip-inner {
+    background: #db6574;
+    border-color: #f61834;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 4px;
+
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #d31135 !important;
+}
+
+.circle-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    bottom: 6px;
+    left: 5px;
+}

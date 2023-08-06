@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="Resourse/CSS/login.css">
+
+	<!-- jquary -->
+	<script src="Resourse/Jquary/jquary.js"></script>
+</head>
+<body>
+	<div class="box">
+		<form autocomplete="off" method="post" action="/login">
+			<div id="divtb">
+				<img id="techbeats" src="Resourse/Images/techbeats.svg" width="75%">
+			</div>
+			
+			<h2>LOGIN</h2>
+
+			<div class="inputBox">
+				<input type="text" required="required" id="login-username" name="user_name">
+				<span for="login-username">Userame</span>
+				<i></i>
+			</div>
+			<div class="inputBox">
+				<input type="password" id="login-password" name="password" required="required">
+				<span for="login-password">Password</span>
+				<i></i>
+			</div>
+			<div id="errmsg" style="display:none;color: #f25772;position: absolute;bottom: 100px;font-weight: 700;">
+			</div>
+			
+			<!-- <button class='glowing-btn'><span class='glowing-txt'>C<span class='faulty-letter'>L</span>ICK</span></button> -->
+			<button class="button">Submit</button>
+		</form>
+	</div>
+
+	<script>
+		window.addEventListener("load",ex =>{
+		   let url = window.location.href;
+		   if (url == "http://localhost:8080/login?error=usernamepassworderror"){
+			 $('#errmsg').html('<div>Incorrect username or password</div>');
+			 $('#errmsg').show(); // Show the error message
+		   }else{
+			 $('#errmsg').hide(); // Hide the error message
+		   }
+		 })
+	   </script>
+   
+</body>
+</html>
