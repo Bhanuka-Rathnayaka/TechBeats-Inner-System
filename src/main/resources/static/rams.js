@@ -102,7 +102,7 @@ const formReFill = (obj,rowno) => {
 //delete function when click delete button
 const rowDelete= (obj) => {
 
-    let dlt_msg ="Are you suer want to delete following Ram? \n"+
+    let dlt_msg ="Are you suer want to delete following Item? \n"+
         "Ram Code = "+obj.rcode + "\n" +
         "Ram name =" + obj.rname;
     let response = window.confirm(dlt_msg);
