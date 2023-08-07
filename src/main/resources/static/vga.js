@@ -13,9 +13,9 @@ function refreshBrowser() {
 
 const refreshTable = () => {
     //array for store vga data
-    vga = new Array();
-    vga=httpGetRequest("/vga/all")
-    console.log(vga);
+    vgas = new Array();
+    vgas=httpGetRequest("/vga/all")
+
 
     //create display property list
     let display_property_list = ["vcode","vname","vga_status_id.name"];
@@ -24,7 +24,7 @@ const refreshTable = () => {
     let display_property_datatype =["text","text","object"]
 
     //call filltable function fore fill table
-    fillTable(tbl_vga,vga,display_property_list,display_property_datatype,formReFill,rowDelete,rowView,true,loguserPrivilageForModule);
+    fillTable(tbl_vga,vgas,display_property_list,display_property_datatype,formReFill,rowDelete,rowView,true,loguserPrivilageForModule);
 
     //To add jquery table
     $('#tbl_vga').dataTable();
@@ -121,7 +121,7 @@ const vgaPrintModel = () => {
 
 
 const refreshForm = () =>{
-    vge = new Object();
+    vga = new Object();
     old_vga = null;
 
     //create array for fill select element
@@ -157,38 +157,116 @@ const refreshForm = () =>{
     vga.vga_status_id = JSON.parse(select_status.value);
 };
 
-const buttonAddMc = () =>{
-    let submit_confirmMg = "are you suer to add following Processor\n"+
-        "Processor name : "+vga.vname;
+const checkErrors = () => {
+    let errors = "";
 
-    let user_responce = window.confirm(submit_confirmMg);
+  if(vga.item_brand_id == null){
+        errors += "Item Brand Not Selected\n";
+        select_brand.style.borderBottom = "2px solid red"
+  }
 
-    if(user_responce){
-
-        let post_serverice_responce;
-
-        $.ajax("/vga",{
-            async : false,
-            type:"POST",//Method
-            data:JSON.stringify(vga),//data that pass to backend
-            contentType:"application/json",
-            success:function(succsessResData,successStatus,resObj){
-                post_serverice_responce = succsessResData;
-            },error:function (errorResOb,errorStatus,errorMsg){
-                post_serverice_responce = errorMsg;
-            }
-        })
-        if(post_serverice_responce == "0"){
-
-            alert("Add ok")
-            refreshTable();
-            refreshForm();
-
-        }else{
-
-            alert("you have following error \n" + post_serverice_responce)
-        }
+    if(vga.vga_series_id == null){
+        errors += "VGA Series Not Selected\n";
+        select_series.style.borderBottom = "2px solid red"
     }
+
+    if(vga.vga_chipset_id == null){
+        errors += "VGA Chipset Not Selected\n";
+        select_chipset.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.vga_capacity_id == null){
+        errors += "VGA Capasity Not Selected\n";
+        select_capacity.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.vga_type_id == null){
+        errors += "VGA Type Not Selected\n";
+        select_type.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.vname == null){
+        errors += "VGA Name Not Enter\n";
+        txt_vname.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.vga_interface_id == null){
+        errors += "VGA Interface Not Select\n";
+        select_interface.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.length == null){
+        errors += "VGA Length Not Enter\n";
+        txt_length.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.psu == null){
+        errors += "VGA Power Not Enter\n";
+        txt_psu.style.borderBottom = "2px solid red"
+    }
+
+    if(vga.purchase_price == null){
+        txt_purchprice.style.borderBottom = '2px solid red';
+        errors = errors + "purchase price not Entered\n";
+    }
+
+    if(vga.profit_rate == null){
+        txt_profitrate.style.borderBottom = '2px solid red\n';
+        errors = errors + "profit rate not Entered\n";
+    }
+
+
+    if(vga.sale_price == null){
+        txt_saleprice.style.borderBottom = '2px solid red';
+        errors = errors + "Sale price not Entered\n";
+    }
+
+    return errors;
+}
+
+const buttonAddMc = () =>{
+    console.log(vga)
+
+    let error = checkErrors();
+
+    if (error == ""){
+        let submit_confirmMg = "are you suer to add following Processor"+
+            "Processor name : "+vga.vname;
+
+        let user_responce = window.confirm(submit_confirmMg);
+
+        if(user_responce){
+
+            let post_serverice_responce;
+
+            $.ajax("/vga",{
+                async : false,
+                type:"POST",//Method
+                data:JSON.stringify(vga),//data that pass to backend
+                contentType:"application/json",
+                success:function(succsessResData,successStatus,resObj){
+                    post_serverice_responce = succsessResData;
+                },error:function (errorResOb,errorStatus,errorMsg){
+                    console.log(errorMsg)
+                    post_serverice_responce = errorMsg;
+                }
+            })
+            if(post_serverice_responce == "0"){
+
+                alert("Add ok")
+                refreshTable();
+                refreshForm();
+
+            }else{
+
+                alert("you have following error \n" + post_serverice_responce)
+            }
+        }
+    }else {
+        alert(error)
+    }
+
+
 };
 
 const buttonUpdateMC = () =>{

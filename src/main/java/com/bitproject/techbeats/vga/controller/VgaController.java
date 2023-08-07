@@ -191,6 +191,7 @@ public class VgaController {
             if(extVga != null){
                 try{
                     vga.setUpdatedatetime(LocalDateTime.now());
+                    vga.setWarranty(6);
 
                     //save operator
                     vgaDao.save(vga);
