@@ -5,6 +5,7 @@ import com.bitproject.techbeats.grn.model.Grn;
 import com.bitproject.techbeats.item.ItemCategoryRepository;
 import com.bitproject.techbeats.laptop.model.Laptop;
 import com.bitproject.techbeats.laptop.repository.LaptopRepository;
+import com.bitproject.techbeats.laptop.repository.LaptopStatusRepository;
 import com.bitproject.techbeats.motherboard.model.Motherboard;
 import com.bitproject.techbeats.privilage.controller.PrivilageControl;
 import com.bitproject.techbeats.user.User;
@@ -36,6 +37,9 @@ public class LaptopController {
 
     @Autowired
     private ItemCategoryRepository itemCategoryDao;
+
+    @Autowired
+    private LaptopStatusRepository laptopStatusDao;
 
     //Set UI
     @GetMapping
@@ -86,6 +90,40 @@ public class LaptopController {
     @GetMapping(value = "/listbycategories/{bid}",produces = "application/json")
     public List<Laptop> lapListPR(@PathVariable("bid") Integer bid){
         return laptopDao.lapListForPR(bid);
+    }
+
+    //Delete mapping
+    @DeleteMapping
+    public String deleteLaptop(@RequestBody Laptop laptop){
+        //Check privilage
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User logUser = userDao.findUserByUsername(auth.getName());
+
+        HashMap<String, Boolean> userPrivilage = privilageControl.getPrivilageByUserModule(auth.getName(), "Laptop");
+
+        if (logUser != null && userPrivilage.get("delete_permission")){
+            //check lap exist
+            Laptop extLap = laptopDao.getReferenceById(laptop.getId());
+            if (extLap != null){
+                try {
+                    //set auto insert value
+                    laptop.setDeletedatetime(LocalDateTime.now());
+                    laptop.setDeleteuser_id(logUser);
+                    laptop.setLap_status_id(laptopStatusDao.getReferenceById(2));
+
+                    laptopDao.save(laptop);
+
+                    return "0";
+
+                }catch (Exception e){
+                    return e.getMessage();
+                }
+            }else{
+                return "Delete not completed : Laptop not availabal";
+            }
+        }else {
+            return "Delete not complete : You dont have permission";
+        }
     }
 
 

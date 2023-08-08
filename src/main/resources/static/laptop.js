@@ -72,7 +72,83 @@ const formReFill = (obj) =>{
     tabSwitch(lap_table,lap_form);
 }
 
-const rowDelete = (obj) =>{
+const rowDelete= (obj) => {
+
+    //Show the confirmation box when the delete button is clicked
+    iziToast.show({
+        theme: 'dark',
+        title: 'Are you sure to delete the following Motherboard...?',
+        message: "Laptop Code: " + obj.code + "<br>Laptop Name: " + obj.name,
+        layout: 2,
+        position: 'topCenter',
+        overlay: true,
+        timeout: false,
+        close:false,
+        closeOnEscape: false,
+        progressBar: false,
+        buttons: [
+            ['<button><b>Yes</b></button>', function (instance, toast) {
+                // Do something when the "Yes" button is clicked
+
+                let delete_server_responce;
+
+                $.ajax("/laptop",{
+                    async : false,
+                    type:"DELETE",//Method
+                    data:JSON.stringify(obj),//data that pass to backend
+                    contentType:"application/json",
+                    success:function(succsessResData,successStatus,resObj){
+                        delete_server_responce = succsessResData;
+                    },error:function (errorResOb,errorStatus,errorMsg){
+                        delete_server_responce = errorMsg;
+                    }
+                })
+                if(delete_server_responce == "0"){
+                    iziToast.success({
+                        theme: 'dark',
+                        title: 'Item Deleted',
+                        position: 'topRight',
+                        overlay: true,
+                        displayMode: 'once',
+                        zindex: 999,
+                        animateInside: true,
+                        closeOnEscape:true,
+                        timeout: 2000,
+                        closeOnClick: true,
+
+                    });
+                    refreshTable();
+                }else{
+                    iziToast.error({
+                        title: 'An error occurred',
+                        message: delete_server_responce,
+                        position: 'topRight',
+                        overlay: true,
+                        closeOnEscape: false,
+                        close: true,
+                        layout: 2,
+                        displayMode: 'once',
+                        zindex: 999,
+                        animateInside: true,
+                        buttons: [
+                            ['<button><b>OK</b></button>', function (instance, toast) {
+                                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                            }, true]
+                        ]
+                    });
+                }
+                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }, true],
+            ['<button>No</button>', function (instance, toast) {
+                // Do something when the "No" button is clicked
+                iziToast.warning({
+                    title: 'Cancel',
+                })
+                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            }]
+        ]
+    });
 
 }
 
